@@ -26,10 +26,19 @@ new Vue({
       this.monsterAttacks();
     },
     heal: function() {
-
+      if (this.playerHealth === 100) {
+        alert("You're already full health!")
+        return;
+      } 
+      else if (this.playerHealth >= 90) {
+        this.playerHealth = 100;
+      } else {
+        this.playerHealth += 10;
+      }
+      this.monsterAttacks();
     },
     giveUp: function() {
-
+      this.gameIsRunning = false;
     },
     calculateDamage: function(min, max) {
       return Math.max(Math.floor(Math.random() * max) + 1, min);
